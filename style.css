@@ -1,13 +1,33 @@
 body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin:0;
     min-height: 100vh;
     box-sizing: border-box;
     background-color: #151515;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
+#gametitle {
+    color: white;
+}
+
+#titlescreen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+}
+
+#start {
+    height: 100px;
+    width: 500px;
+    font-size: 50px;
+    border-radius: 50px;
+}
+
+/* 
 .box {
     padding: 20px;
     max-width: 40%;
@@ -15,7 +35,7 @@ body {
     background-color: white;
 }
 
-.stawp {
+.indstats {
     padding-right: 5px;
 }
 
@@ -32,7 +52,9 @@ body {
     align-items: center;
 }
 
-.cool{
+#attack,
+#dodge,
+#run {
     transition-duration: 0.5s;
     background-color: yellow;
     height: 540;
@@ -42,7 +64,9 @@ body {
     margin-right: 5px;
 }
 
-.cool:hover {
+#attack:hover,
+#dodge:hover,
+#run:hover {
     background-color: lightyellow;
 }
 
@@ -50,7 +74,7 @@ body {
     background-color: red;
 }
 
-.mom {
+.monster {
     color: white;
     padding-right: 5px;
 }
@@ -59,6 +83,6 @@ body {
     background-color: #151515;
 }
 
-.dad {
+.text {
     color: white;
-}
+} */
