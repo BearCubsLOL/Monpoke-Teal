@@ -1,6 +1,27 @@
+const body = document.querySelector('.body');
+
 function lobby() {
     gameTitle = document.querySelector('#titlescreen').remove()
-    
+    body.innerHTML = `
+        <div id="buttons">
+            <button id="fight">Fight</button>
+        </div>
+    `
+    document.querySelector('#fight').addEventListener('click', (e) => {
+        pickAFight()
+    })
+}
+
+function pickAFight() {
+    gameTitle = document.querySelector('#buttons').remove()
+    body.innerHTML = `
+        <div id="monsters">
+            <div id="dragonstats">
+                <h1>Monster: Dragon</h1>
+                <button id="Dragon">Fight</button>
+            </div>
+        </div>
+`
 }
 
 function goToLobby() {
