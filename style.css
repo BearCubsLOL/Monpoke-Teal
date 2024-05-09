@@ -6,6 +6,7 @@ body {
     min-height: 100vh;
     box-sizing: border-box;
     background-color: #151515;
+    padding: 50px;
 }
 
 #gametitle {
@@ -55,20 +56,37 @@ body {
     justify-content: center;
     height: 5000px;
     width: 1000px;
-    padding: 10px;
-    border-style: solid;
-    border-width: 10px;
-    border-color: darkcyan;
+    padding: 30px;
+    box-shadow: 0 0 50px teal;
     background-color: #462749;
 }
 
 #dragonstats {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     height: 200px;
     width: 900px;
-    background-color: darkgrey;
+    padding: 15px;
+    background-color: #151515;
+    box-shadow: 0 0 50px #151515
 }
 
-/* 
+#text {
+    color: white;
+}
+
+#fightdragon {
+    width: 100px;
+    height: 25px;
+    border-radius: 50px;
+}
+
+.desc {
+    color: white;
+}
+
+
 .box {
     padding: 20px;
     max-width: 40%;
@@ -126,4 +144,4 @@ body {
 
 .text {
     color: white;
-} */
+}
