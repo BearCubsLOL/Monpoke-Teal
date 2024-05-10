@@ -53,8 +53,9 @@ body {
 
 #monsters {
     display: flex;
-    justify-content: center;
-    height: 5000px;
+    flex-direction: column;
+    align-items: center;
+    height: 500px;
     width: 1000px;
     padding: 30px;
     box-shadow: 0 0 50px teal;
@@ -62,6 +63,17 @@ body {
 }
 
 #dragonstats {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 200px;
+    width: 900px;
+    padding: 15px;
+    background-color: #151515;
+    box-shadow: 0 0 50px #151515
+}
+
+#goblinstats {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -143,5 +155,35 @@ body {
 }
 
 .text {
+    color: white;
+}
+
+#win {
+    color: white;
+}
+
+#lobby {
+    height: 100px;
+    width: 500px;
+    font-size: 50px;
+    border-radius: 50px;
+}
+
+#lobby:hover {
+    background-color: azure;
+}
+
+#temp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#losses {
+    color: white;
+}
+
+#status {
     color: white;
 }
