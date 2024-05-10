@@ -1,5 +1,6 @@
 const body = document.querySelector('.body');
 let playerGoldFr = 50;
+let playerXpFr = 0;
 
 function lobby(del) {
     gameTitle = document.querySelector(del).remove()
@@ -91,91 +92,96 @@ function dragonFight() {
 
     trackPlayerGold = playerGoldFr
     playerGold.innerHTML = trackPlayerGold;
-
-        playerAttack.addEventListener('click', (e) => {
-            trackMonsterHealth -= playerAttackDamage;
-            monsterHealth.innerHTML = trackMonsterHealth;
-            trackPlayerHealth -= 20;
+    trackPlayerXp = playerXpFr
+    playerXp.innerHTML = trackPlayerXp;
+    
+    playerAttack.addEventListener('click', (e) => {
+        trackMonsterHealth -= playerAttackDamage;
+        monsterHealth.innerHTML = trackMonsterHealth;
+        trackPlayerHealth -= 20;
+        playerHealth.innerHTML = trackPlayerHealth;
+        if (trackPlayerHealth <= 0) {
+            lossScreen("Dragon")
+            playerGoldFr -= 20
+            
+        }
+        if (trackMonsterHealth <= 0){
+            playerGoldFr += 20
+            playerXpFr += 70
+            winScreen("Dragon")
+        }
+    });
+    playerDodge.addEventListener('click', (e) => {
+        trackPlayerHealth += 20;
+        playerHealth.innerHTML = trackPlayerHealth;
+        if (trackPlayerHealth > 100) {
+            trackPlayerHealth = 100
             playerHealth.innerHTML = trackPlayerHealth;
-            if (trackPlayerHealth <= 0) {
-                lossScreen("Dragon")
-                playerGoldFr -= 20
-
-            }
-            if (trackMonsterHealth <= 0){
-                playerGoldFr += 20
-                winScreen("Dragon")
-            }
-        });
-      playerDodge.addEventListener('click', (e) => {
-            trackPlayerHealth += 20;
-            playerHealth.innerHTML = trackPlayerHealth;
-            if (trackPlayerHealth > 100) {
-                trackPlayerHealth = 100
-                playerHealth.innerHTML = trackPlayerHealth;
-            } 
-        });
-
-        playerRun.addEventListener('click', (e) => {
-            playerGoldFr -= 5
-            ranScreen("Dragon")
-        });
-
+        } 
+    });
+    
+    playerRun.addEventListener('click', (e) => {
+        playerGoldFr -= 5
+        ranScreen("Dragon")
+    });
+    
 }
 
 function goblinFight() {
     document.querySelector('#monsters').remove()
     body.innerHTML = `
-        <div class="box">
-            <div class="stats">
-                <p class="indstats">XP: <b id="xp">0</b></p>
-                <p class="indstats">|</p>
-                <p class="indstats">Health: <b id="health">100</b></p>
-                <p class="indstats">|</p>
-                <p class="indstats">Gold: <b id="gold">50</b></p>
-            </div>
-            <div class="options">
-                <button id="attack">Attack</button>
-                <button id="dodge">Dodge</button>
-                <button id="run">Run</button>
-            </div>
-            <div class="monsterstats">
-                <p class="monster">Monster Name: <b id="monstername">Goblin</b></p>
-                <p class="monster">|</p>
-                <p class="monster">Health: <b id="monsterhealth">75</b></p>
-            </div>
-            <div class="whathappen">
-                <p id="status">You are fighting a monster</p>
-            </div>
-        </div>
+    <div class="box">
+    <div class="stats">
+    <p class="indstats">XP: <b id="xp">0</b></p>
+    <p class="indstats">|</p>
+    <p class="indstats">Health: <b id="health">100</b></p>
+    <p class="indstats">|</p>
+    <p class="indstats">Gold: <b id="gold">50</b></p>
+    </div>
+    <div class="options">
+    <button id="attack">Attack</button>
+    <button id="dodge">Dodge</button>
+    <button id="run">Run</button>
+    </div>
+    <div class="monsterstats">
+    <p class="monster">Monster Name: <b id="monstername">Goblin</b></p>
+    <p class="monster">|</p>
+    <p class="monster">Health: <b id="monsterhealth">75</b></p>
+    </div>
+    <div class="whathappen">
+    <p id="status">You are fighting a monster</p>
+    </div>
+    </div>
     `
     let playerXp = document.querySelector("#xp");
     let playerHealth = document.querySelector("#health");
     let playerGold = document.querySelector("#gold");
-
+    
     let playerAttack = document.querySelector("#attack");
     let playerDodge = document.querySelector("#dodge");
     let playerRun = document.querySelector("#run");
-
+    
     let monsterHealth = document.querySelector("#monsterhealth");
-
+    
     let status = document.querySelector("#status")
-
+    
     let trackPlayerXp = parseInt(playerXp.innerHTML);
     let trackPlayerHealth = parseInt(playerHealth.innerHTML);
     let trackPlayerGold = parseInt(playerGold.innerHTML);
     let trackMonsterHealth = parseInt(monsterHealth.innerHTML);
-
+    
     let playerAttackDamage = 10
-
+    
     trackPlayerGold = playerGoldFr
     playerGold.innerHTML = trackPlayerGold;
-
-        playerAttack.addEventListener('click', (e) => {
-            trackMonsterHealth -= playerAttackDamage;
-            monsterHealth.innerHTML = trackMonsterHealth;
-            trackPlayerHealth -= 5;
-            playerHealth.innerHTML = trackPlayerHealth;
+    trackPlayerXp = playerXpFr
+    playerXp.innerHTML = trackPlayerXp;
+    
+    playerAttack.addEventListener('click', (e) => {
+        trackMonsterHealth -= playerAttackDamage;
+        monsterHealth.innerHTML = trackMonsterHealth;
+        trackPlayerHealth -= 5;
+        playerHealth.innerHTML = trackPlayerHealth;
             if (trackPlayerHealth <= 0) {
                 lossScreen("Goblin")
                 playerGoldFr -= 50
@@ -186,6 +192,7 @@ function goblinFight() {
             }
             if (trackMonsterHealth <= 0){
                 playerGoldFr += 20
+                playerXpFr += 70
                 winScreen("Goblin")
             }
         });
@@ -214,7 +221,7 @@ function winScreen(Monster) {
     body.innerHTML = `
         <div id="temp">
             <h1 id="win">You beat a ${Monster}</h1>
-            <p id="losses"> You Gained 20 gold for winning!</p>
+            <p id="losses"> You Gained 20 gold and 70xp for winning!</p>
             <button id="lobby">Go back to lobby</button>
         </div>
     `
